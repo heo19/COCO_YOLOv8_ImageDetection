@@ -24,7 +24,7 @@ while webcam.isOpened():
         confs = result.boxes.conf
         for xyxy, label_idx, conf in zip(xyxys, labels_idx, confs):
             label = model.names[int(label_idx)]
-            color = colors[int(label_idx)]  # Get the color for this class index
+            color = colors[int(label_idx)]
             cv2.rectangle(frame, (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3])), color, 2)
             cv2.putText(frame, f"{label}: {conf:.2f}", (int(xyxy[0]), int(xyxy[1])-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
             
