@@ -5,7 +5,6 @@ import torch
 
 class YOLOImagePredictor:
     def __init__(self, model_path, directory, conf):
-        self.device_to_use = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.model = YOLO(model_path)
         self.directory = directory
         self.conf = conf
@@ -24,9 +23,8 @@ class YOLOImagePredictor:
         
         print(f"Predictions saved in {self.save_dir}" +
               f" with confidence threshold {self.conf}" +
-              f" on images from {self.directory}" +
-              f" using device {self.device_to_use}")
-        
+              f" on images from {self.directory}")
+
 model_path = "yolov8n.pt"
 directory = "testingSamples"
 cocoPredictor = YOLOImagePredictor(model_path, directory, 0.5)
