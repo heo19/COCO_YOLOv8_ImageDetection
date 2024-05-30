@@ -1,9 +1,8 @@
 # COCO_YOLOv8_ImageDetection
 
-testingSamples: contains 604 images from test2017 from COCO dataset.
+testingSamples: contains 602 images from test2017 from COCO dataset.
 
-predictionResults: contains 604 images after detection with bbox
-
+predictionResults: contains 602 images after detection with bbox
 
 YOLOImagePredictor.py : detects object with pretrained YOLOv8
 
