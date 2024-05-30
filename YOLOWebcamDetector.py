@@ -15,13 +15,13 @@ while webcam.isOpened():
     if not status:
         break
 
-    results = model.predict(frame, conf=0.5)
+    results = model.predict(frame, conf=0.3, stream=True)
     
     for result in results:
         boxes = result.boxes.cpu().numpy()
         xyxys = boxes.xyxy
-        labels_idx = result.boxes.cls
-        confs = result.boxes.conf
+        labels_idx = boxes.cls
+        confs = boxes.conf
         for xyxy, label_idx, conf in zip(xyxys, labels_idx, confs):
             label = model.names[int(label_idx)]
             color = colors[int(label_idx)]

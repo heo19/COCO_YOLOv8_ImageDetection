@@ -14,13 +14,13 @@ class YOLOImagePredictor:
         results = self.model.predict(self.directory, conf=self.conf)
         
         for i, result in enumerate(results):
-            for r in result:
-                im_array = result.plot()
-                im = Image.fromarray(im_array[..., ::-1])
-                original_filename = os.listdir(self.directory)[i]
-                result_filename = os.path.splitext(original_filename)[0] + f'_result.jpg'
-                im.save(os.path.join(self.save_dir, result_filename))
-        
+            im_array = result.plot()
+            im = Image.fromarray(im_array[..., ::-1])
+            original_filename = os.listdir(self.directory)[i]
+            result_filename = os.path.splitext(original_filename)[0] + f'_result.jpg'
+            result.save(os.path.join(self.save_dir, result_filename))
+            print(result.tojson()+"\n\n\n")
+            
         print(f"Predictions saved in {self.save_dir}" +
               f" with confidence threshold {self.conf}" +
               f" on images from {self.directory}")
